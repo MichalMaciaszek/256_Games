@@ -136,7 +136,6 @@ class OptionsMenu(Menu):
             # TO-DO: Create a Controls Menu
             self.game.curr_menu = self.game.volume_menu
             self.run_display = False
-            #pass
 
 class VolumeMenu(Menu):
     def __init__(self, game):

@@ -115,7 +115,8 @@ def isCollision(a_cordinates, b_cordinates):
 
 enemies = list()
 enemyA = Enemy()
-enemies.append(enemyA)
+# enemies.append(enemyA)
+enemies.append(Enemy())
 print(enemies)
 
 start = pygame.time.get_ticks()
@@ -130,7 +131,7 @@ while running:
     if now - start > 2000:
         start = now
        # enemy = Enemy(60, 200, player)
-        enemies.append(Enemy())
+        # enemies.append(Enemy())
 
     for event in pygame.event.get():
         if event.type == KEYDOWN:

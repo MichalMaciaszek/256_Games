@@ -1,0 +1,3 @@
+DISPLAY_W = 480 * 2
+DISPLAY_H = 270 * 2
+
