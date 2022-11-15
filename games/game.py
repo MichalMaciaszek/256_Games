@@ -11,7 +11,7 @@ class Game:
     def __init__(self) -> None:
         pygame.init()
 
-        self.Boundaries_L_R_U_D = [1.5 / 6, 4.5 / 6, 0, 0]
+        self.Boundaries_L_R_U_D = [2 / 6, 4 / 6, 0, 0]
 
         self.running = True
         self.playing = False
@@ -38,6 +38,10 @@ class Game:
         self.volume_menu = VolumeMenu(self)
         self.music_volume = 0.1
         self.font = pygame.font.Font(self.font_name, 10)
+        
+        self.score = 0
+        self.lifes = 3
+        
 
     def check_events(self):
         for event in pygame.event.get():

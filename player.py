@@ -8,7 +8,7 @@ class Player:
     def __init__(self) -> None:
         self.position_X = int(DISPLAY_W / 2)
         self.position_Y = int(DISPLAY_H - DISPLAY_H / 10)
-        self.speed = 0.3
+        self.speed = DISPLAY_H / 500#= 0.3
         self.change = 0
         self.ship = pygame.image.load("D:\\Python_projects\\256 Games\\images\\Ship_10.png").convert()
         self.ship = pygame.transform.scale(self.ship, (1 / 12 * DISPLAY_W, 1 / 12 * DISPLAY_H))
