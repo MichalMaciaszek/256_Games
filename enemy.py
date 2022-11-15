@@ -9,12 +9,8 @@ class Enemy:
         self.position_Y = int(0 + DISPLAY_H / 10)
         self.speed = 0.5
         self.change_Y = 0
-        self.ship = pygame.image.load(
-            "D:\\Python_projects\\256 Games\\images\\Ship_10.png"
-        ).convert()
-        self.ship = pygame.transform.scale(
-            self.ship, (1 / 12 * DISPLAY_W, 1 / 12 * DISPLAY_H)
-        )
+        self.ship = pygame.image.load("D:\\Python_projects\\256 Games\\images\\Ship_10.png").convert()
+        self.ship = pygame.transform.scale(self.ship, (1 / 12 * DISPLAY_W, 1 / 12 * DISPLAY_H))
         self.rect = self.ship.get_rect()
 
     def get_position(self):
@@ -22,7 +18,6 @@ class Enemy:
 
     def move_X(self, change):
         self.change = change
-        # print(self.position_X)
 
     def move_Y(self):
         self.change = 0.5

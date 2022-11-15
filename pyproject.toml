@@ -1,0 +1,13 @@
+[tool.black]
+line-length = 200
+target-version = ['py37', 'py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  | blib2to3
+  | tests/data
+  | profiling
+)/
+'''
+
+preview = true

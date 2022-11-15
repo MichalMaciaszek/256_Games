@@ -46,9 +46,7 @@ class MainMenu(Menu):
             self.game.check_events()
             self.check_input()
             self.game.display.fill(self.game.BLACK)
-            self.game.draw_text(
-                "Main Menu", 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20
-            )
+            self.game.draw_text("Main Menu", 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
             self.game.draw_text("Start Game", 20, self.startx, self.starty)
 
             self.game.draw_text(
@@ -122,9 +120,7 @@ class OptionsMenu(Menu):
             self.game.check_events()
             self.check_input()
             self.game.display.fill((0, 0, 0))
-            self.game.draw_text(
-                "Options", 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 30
-            )
+            self.game.draw_text("Options", 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 30)
             self.game.draw_text("Volume", 15, self.volx, self.voly)
             self.game.draw_text("Controls", 15, self.controlsx, self.controlsy)
             self.draw_cursor()
@@ -158,9 +154,7 @@ class VolumeMenu(Menu):
             self.game.check_events()
             self.check_input()
             self.game.display.fill(self.game.BLACK)
-            self.game.draw_text(
-                "Set volume", 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20
-            )
+            self.game.draw_text("Set volume", 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
             self.volume_grid_size = [
                 self.game.DISPLAY_W / 2 - self.game.music_volume * 60,
                 self.game.music_volume * 60 * 2,
@@ -200,18 +194,14 @@ class CreditsMenu(Menu):
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
             self.game.display.fill(self.game.BLACK)
-            self.game.draw_text(
-                "Credits", 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20
-            )
+            self.game.draw_text("Credits", 20, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 - 20)
             self.game.draw_text(
                 "Made by Michal Maciaszek",
                 15,
                 self.game.DISPLAY_W / 2,
                 self.game.DISPLAY_H / 2 + 10,
             )
-            self.game.draw_text(
-                "Music:", 10, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50
-            )
+            self.game.draw_text("Music:", 10, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50)
             self.game.draw_text(
                 "I'm Going Bazurky by morgantj (c) copyright 2011 Licensed under a Creative Commons Noncommercial Sampling Plus license.",
                 10,
