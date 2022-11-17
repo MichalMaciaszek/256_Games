@@ -1,27 +1,30 @@
 import pygame
-from menu import *
+from menus.menu_choices import *
 
 
 from games.game import Game
 from games.cars import Cars
+from games.cars_x_y import Cars_X_Y
+from menus.menu_runner import Menu_Runner
 
-games_by_id =  {1: Cars()}
+games_by_id =  {1: Cars(), 2: Cars_X_Y()}
 
 
 if __name__ == "__main__":
-    g = Game()
+    runner = Menu_Runner()
     pygame.mixer.init()
     pygame.mixer.music.load("music/morgantj_-_I_m_Going_Bazurky.ogg")
     pygame.mixer.music.play()
-    pygame.mixer.music.set_volume(g.music_volume)
+    pygame.mixer.music.set_volume(runner.music_volume)
 
-    while g.running:
-        g.curr_menu.display_menu()
-
-        if g.playing == True:
-            current = g.curr_menu.current_level
+    while runner.running:
+        runner.curr_menu.display_menu()
+        if runner.start_the_game == True:
+            runner.start_the_game = False
+            current = runner.curr_menu.current_level
             try:
                 game = games_by_id[current]
                 game.game_loop()
+                game.reset_keys()
             except KeyError:
                 print("No such a game yet")

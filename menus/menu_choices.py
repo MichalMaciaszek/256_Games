@@ -62,7 +62,6 @@ class MainMenu(Menu):
             self.blit_screen()
 
     def change_state(self, state, quantity):
-        print(state)
         if state >= 1 and quantity < 0:
             state += quantity
         if state <= 2 and quantity > 0:
@@ -99,6 +98,7 @@ class MainMenu(Menu):
         if self.game.START_KEY:
             if self.state == "Start":
                 self.game.playing = True
+                self.game.start_the_game = True
             elif self.state == "Options":
                 self.game.curr_menu = self.game.options
             elif self.state == "Credits":

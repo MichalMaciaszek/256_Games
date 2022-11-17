@@ -9,14 +9,13 @@ from pathlib import Path
 fonts_folder = Path("fonts")
 
 
-class Game:
+class Menu_Runner:
     def __init__(self) -> None:
         pygame.init()
-        
-        self.clock = pygame.time.Clock()
 
+        self.start_the_game = False
 
-        self.Boundaries_L_R_U_D = [2 / 6, 4 / 6, 1, 0]
+        self.running = True
         self.playing = False
         (
             self.UP_KEY,
@@ -33,15 +32,15 @@ class Game:
         self.window = pygame.display.set_mode((self.DISPLAY_SIZE))
         self.font_name  = fonts_folder / "PixeloidMono-1G8ae.ttf"
 
- 
         self.BLACK = (0, 0, 0)
         self.WHITE = (255, 255, 255)
-
+        self.main_menu = MainMenu(self)
+        self.options = OptionsMenu(self)
+        self.credits = CreditsMenu(self)
+        self.curr_menu = MainMenu(self)
+        self.volume_menu = VolumeMenu(self)
         self.music_volume = 0.1
         self.font = pygame.font.Font(self.font_name, 10)
-        
-        self.score = 0
-        self.lifes = 3
         
 
     def check_events(self):
@@ -85,16 +84,6 @@ class Game:
             self.LEFT_KEY,
             self.RIGHT_KEY,
         ) = (False, False, False, False, False, False)
-
-
-    def game_loop(self):
-        
-        while self.playing:
-            self.check_events()
-            if self.START_KEY:
-                self.playing = False
-
-            pygame.display.update()
 
 
     def draw_text(self, text, size, x, y):
