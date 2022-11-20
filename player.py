@@ -4,15 +4,8 @@ from pathlib import Path
 image_folder = Path("images")
 
 class Player:
-    def __init__(self) -> None:
-        self.position_X = int(DISPLAY_W / 2)
-        self.position_Y = int(DISPLAY_H - DISPLAY_H / 10)
-        self.speed = DISPLAY_H / 500
-        self.max_speed = DISPLAY_H / 500
-        self.change = 0
-        self.change_Y = 0
-        self.change_X = 0
-        self.current_force = 0
+    def __init__(self, starting_position_relative: tuple() = None) -> None:
+        
         self.ship = pygame.image.load(image_folder / "Ship_10.png").convert()
         transColor = pygame.Color(255, 255, 255)
         self.ship.set_colorkey(transColor)#.convert_alpha()
@@ -20,6 +13,22 @@ class Player:
         self.ship_width = self.ship.get_width()
         self.ship_height = self.ship.get_height()
         self.rect = self.ship.get_rect()
+        
+        if starting_position_relative is None:
+            self.position_X = int(DISPLAY_W / 2 - self.ship_width/2)
+            self.position_Y = int(DISPLAY_H - DISPLAY_H / 10)
+        else:
+            self.position_X  = int(DISPLAY_W / starting_position_relative[0] - self.ship_width/2)
+            self.position_Y  = int(DISPLAY_H / starting_position_relative[1])
+            
+            
+        self.speed = DISPLAY_H / 500
+        self.max_speed = DISPLAY_H / 500
+        self.change = 0
+        self.change_Y = 0
+        self.change_X = 0
+        self.current_force = 0
+
 
     def rotate_to_side(self):
         pass

@@ -1,7 +1,7 @@
 import math
 from config import DISPLAY_W, DISPLAY_H
-from player import Player
-from enemy import Enemy
+# from player import Player
+# from enemy import Enemy
 from colissions import isCollision
 import pygame
 from menus.menu_choices import *

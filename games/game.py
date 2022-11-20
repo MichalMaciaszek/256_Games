@@ -1,8 +1,8 @@
 import math
 from config import DISPLAY_W, DISPLAY_H
-from player import Player
-from enemy import Enemy
-from colissions import isCollision
+# from player import Player
+# from enemy import Enemy
+# from colissions import isCollision
 import pygame
 from menus.menu_choices import *
 from pathlib import Path
@@ -10,11 +10,13 @@ fonts_folder = Path("fonts")
 
 
 class Game:
+
     def __init__(self) -> None:
         pygame.init()
         
-        self.clock = pygame.time.Clock()
+        self.basic_font = pygame.font.SysFont("Arial", 18)
 
+        self.clock = pygame.time.Clock()
 
         self.Boundaries_L_R_U_D = [2 / 6, 4 / 6, 1, 0]
         self.playing = False
@@ -42,13 +44,17 @@ class Game:
         
         self.score = 0
         self.lifes = 3
-        
+
+    def update_fps(self):
+        fps = str(int(self.clock.get_fps()))
+        fps_text = self.basic_font.render(fps, 1, pygame.Color("coral"))
+        return fps_text        
 
     def check_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running, self.playing = False, False
-                self.curr_menu.run_display = False
+                #self.curr_menu.run_display = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
                     self.START_KEY = True
@@ -88,7 +94,7 @@ class Game:
 
 
     def game_loop(self):
-        
+        ## TO DO - create decorator that will do that - we are always using this one
         while self.playing:
             self.check_events()
             if self.START_KEY:

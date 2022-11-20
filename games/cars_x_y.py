@@ -1,7 +1,7 @@
 import math
 from config import DISPLAY_W, DISPLAY_H
 from player import Player
-from enemy import Enemy
+from enemies.cars_enemy import Cars_Enemy
 from colissions import isCollision
 import pygame
 from menus.menu_choices import *
@@ -10,7 +10,6 @@ from objects.life_counter import Heart
 
 pygame.init()
 clock = pygame.time.Clock()
-basic_font = pygame.font.SysFont("Arial", 18)
 
 
 class Cars_X_Y(Cars):

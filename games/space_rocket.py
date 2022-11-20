@@ -9,20 +9,22 @@ from games.game import Game
 from objects.life_counter import Heart
 
 pygame.init()
+basic_font = pygame.font.SysFont("Arial", 18)
 
 
-class Cars(Game):
+class Space_Rocket(Game):
     def __init__(self):
         Game.__init__(self)
         self.playing = True
+        self.Boundaries_L_R_U_D = [0,1,1,0]
  
     def move_player(self, player):
         # player.movement_X(self)
         player.movement_X_drift(self)
-        # player.movement_Y(self)
+        player.movement_Y(self)
         
     def game_loop(self):
-        player = Player()
+        player = Player((2,2))
         enemies = list()
         enemies.append(Cars_Enemy())
         framecounter = 0
@@ -36,25 +38,6 @@ class Cars(Game):
                 self.playing = False
             self.display.fill(self.WHITE)
 
-            # BOUNDARIES
-            pygame.draw.rect(
-                    self.display,
-                    (self.BLACK),
-                    (0, 0, self.DISPLAY_W * (self.Boundaries_L_R_U_D[0]), self.DISPLAY_H),
-                    0,
-                )
-            
-            pygame.draw.rect(
-                    self.display,
-                    (self.BLACK),
-                    (
-                        self.DISPLAY_W * (self.Boundaries_L_R_U_D[1]),
-                        0,
-                        self.DISPLAY_W,
-                        self.DISPLAY_H,
-                    ),
-                    0,
-                )
 
             # Player
             self.move_player(player)
@@ -69,18 +52,18 @@ class Cars(Game):
                 enemies.append(Cars_Enemy())
                 framecounter = 0
 
-            for e in enemies:
-                e.draw(self.display)
-                e.rect = e.ship.get_rect(topleft=(e.position_X, e.position_Y))
-                if isCollision(player.rect, e.rect):
-                    enemies.remove(e)
-                    lifes.lifes -= 1
-                elif e.get_coordinates()[1] > self.DISPLAY_H:
-                    self.score += 1
-                    enemies.remove(e)
+            # for e in enemies:
+            #     e.draw(self.display)
+            #     e.rect = e.ship.get_rect(topleft=(e.position_X, e.position_Y))
+            #     if isCollision(player.rect, e.rect):
+            #         enemies.remove(e)
+            #         lifes.lifes -= 1
+            #     elif e.get_coordinates()[1] > self.DISPLAY_H:
+            #         self.score += 1
+            #         enemies.remove(e)
                     
             lifes.draw(self.display)
-            self.draw_text(str(self.score), 30, self.DISPLAY_W - self.DISPLAY_W/10, self.DISPLAY_H/10)
+            # self.draw_text(str(self.score), 30, self.DISPLAY_W - self.DISPLAY_W/10, self.DISPLAY_H/10)
 
             # Finalize
             if lifes.lifes <= 0:

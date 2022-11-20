@@ -6,8 +6,9 @@ from games.game import Game
 from games.cars import Cars
 from games.cars_x_y import Cars_X_Y
 from menus.menu_runner import Menu_Runner
+from games.space_rocket import Space_Rocket
 
-games_by_id =  {1: Cars(), 2: Cars_X_Y()}
+games_by_id =  {1: Cars(), 2: Cars_X_Y(), 3: Space_Rocket()}
 
 
 if __name__ == "__main__":
